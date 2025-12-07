@@ -10,11 +10,17 @@ fi
 
 args=()
 for arg in "$@"; do
-  if [[ "${arg}" == "--SiftExtraction.use_gpu" ]]; then
-    args+=(--FeatureExtraction.use_gpu)
-  else
-    args+=("${arg}")
-  fi
+  case "${arg}" in
+    --SiftExtraction.use_gpu)
+      args+=(--FeatureExtraction.use_gpu)
+      ;;
+    --SiftMatching.use_gpu)
+      args+=(--FeatureMatching.use_gpu)
+      ;;
+    *)
+      args+=("${arg}")
+      ;;
+  esac
 done
 
 exec "${COLMAP_BIN}" "${args[@]}"
