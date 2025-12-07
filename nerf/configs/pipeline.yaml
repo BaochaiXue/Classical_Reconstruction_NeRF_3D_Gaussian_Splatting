@@ -1,0 +1,37 @@
+# Nerf pipeline configuration (mirrors 3dgs layout).
+scene_name: statue
+video_path: data/raw/statue/input.mp4
+
+processing:
+  # Keep this many frames; comment out to use all.
+  num_frames_target: 280
+  # Extra ns-process-data args (list of strings).
+  extra_args:
+    - --matching-method
+    - sequential
+    - --colmap-cmd
+    - scripts/colmap_wrapper.sh
+
+training:
+  method: nerfacto
+  vis: tensorboard
+  # Extra ns-train args (list of strings).
+  extra_args:
+    - --max-num-iterations
+    - "6000"
+    - --pipeline.model.hidden-dim
+    - "64"
+
+render:
+  make_dataset_renders: true
+  dataset_render_split: train+test
+  make_orbit_video: false
+  # Provide a camera path JSON at this location to enable orbit rendering.
+  camera_path_file: data/processed/statue/camera_paths/orbit.json
+  make_interpolate_video: true
+  # Extra args passed to ns-render.
+  extra_args: []
+
+exports:
+  cameras: true
+  mesh: false  # set true to export a mesh

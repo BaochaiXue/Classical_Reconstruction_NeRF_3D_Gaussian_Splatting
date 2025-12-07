@@ -1,0 +1,43 @@
+scene_name: statue_scene
+video_path: data/raw/statue/1.mp4
+
+processing:
+  num_frames_target: 420
+  extra_args:
+    - --matching-method
+    - sequential
+
+training:
+  method: splatfacto
+  vis: viewer+tensorboard
+  extra_args:
+    - --pipeline.datamanager.cache-images
+    - cpu
+    - --pipeline.datamanager.camera-res-scale-factor
+    - "1.5"
+    - --pipeline.model.cull_alpha_thresh
+    - "0.003"
+    - --pipeline.model.densify_grad_thresh
+    - "0.0006"
+    - --max-num-iterations
+    - "5000"
+    - --steps-per-eval-image
+    - "500"
+    - --steps-per-save
+    - "500"
+    - --viewer.quit-on-train-completion
+    - "True"
+
+render:
+  make_dataset_renders: true
+  dataset_render_split: train+test
+  make_orbit_video: true
+  camera_path_file: data/processed/statue_scene/camera_paths/orbit.json
+  make_interpolate_video: false
+  interpolate_video_name: interpolate.mp4
+
+exports:
+  figures: true
+  cameras: true
+  splats: true
+  videos: true

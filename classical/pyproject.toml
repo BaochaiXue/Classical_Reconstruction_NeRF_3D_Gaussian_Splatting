@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "classical-recon"
+version = "0.1.0"
+description = "Video-to-classical 3D reconstruction (COLMAP SfM+MVS) with clean, reproducible pipeline."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Xinjie" }]
+dependencies = [
+    "pyyaml>=6.0",
+    "rich>=13",
+]
+
+[project.scripts]
+classical-recon = "classical_recon.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = [
+    "classical_recon",
+    "classical_recon.pipeline",
+]

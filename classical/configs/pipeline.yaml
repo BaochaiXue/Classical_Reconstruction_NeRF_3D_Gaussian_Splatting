@@ -1,0 +1,13 @@
+# Classical reconstruction pipeline configuration.
+scene_name: demo_scene
+video_path: data/raw/demo_scene/input.mp4
+
+processing:
+  frame_rate: 8       # frames per second to extract; null to use source FPS
+  max_frames: 400     # cap on frames; null keeps all
+
+colmap:
+  matcher: sequential # sequential or exhaustive
+  num_threads: 8
+  make_mesh: false    # enable Poisson meshing after fusion
+  extra_args: []      # appended to every COLMAP call

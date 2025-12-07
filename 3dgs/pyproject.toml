@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gs-statue"
+version = "0.1.0"
+description = "Statue-to-3DGS orchestration pipeline built on Nerfstudio."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Xinjie" }]
+dependencies = [
+    "pyyaml>=6.0",
+    "matplotlib>=3.7",
+    "numpy>=1.24",
+    "rich>=13",
+]
+
+[project.scripts]
+gs-statue = "gs_statue.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["gs_statue", "gs_statue.pipeline"]

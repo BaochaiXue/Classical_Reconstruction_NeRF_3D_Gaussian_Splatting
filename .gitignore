@@ -1,0 +1,33 @@
+# Python and editor artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.log
+.Python
+.venv/
+venv/
+env/
+.env
+.DS_Store
+.idea/
+.vscode/
+
+# Build artifacts
+build/
+dist/
+
+# Project data and heavy outputs
+3dgs/data/raw/
+3dgs/data/processed/
+3dgs/exports/
+3dgs/outputs/
+nerf/data/raw/
+nerf/data/processed/
+nerf/exports/
+nerf/outputs/
+classical/data/raw/
+classical/data/processed/
+classical/exports/
+classical/outputs/
