@@ -26,7 +26,6 @@ def render_dataset_views(
         str(output_dir),
         "--rendered-output-names",
         "rgb",
-        "--skip-eval",
         "--split",
         split,
     ]

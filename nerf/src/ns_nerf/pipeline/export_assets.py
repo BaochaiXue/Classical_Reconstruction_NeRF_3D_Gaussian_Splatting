@@ -16,7 +16,7 @@ def export_cameras(config_path: Path, output_dir: Path) -> None:
         "cameras",
         "--load-config",
         str(config_path),
-        "--output-path",
+        "--output-dir",
         str(output_dir),
     ]
     run_command(cmd)
@@ -24,20 +24,20 @@ def export_cameras(config_path: Path, output_dir: Path) -> None:
 
 def export_mesh(
     config_path: Path,
-    output_path: Path,
+    output_dir: Path,
     *,
     extra_args: Optional[Iterable[str]] = None,
 ) -> None:
-    """Export a mesh for the trained Nerf (if supported by the method)."""
+    """Export a mesh for the trained Nerf (marching cubes)."""
     ensure_executable("ns-export")
-    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_dir.mkdir(parents=True, exist_ok=True)
     cmd = [
         "ns-export",
-        "mesh",
+        "marching-cubes",
         "--load-config",
         str(config_path),
-        "--output-path",
-        str(output_path),
+        "--output-dir",
+        str(output_dir),
     ]
     if extra_args:
         cmd += list(extra_args)

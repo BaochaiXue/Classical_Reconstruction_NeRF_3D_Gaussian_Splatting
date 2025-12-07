@@ -104,7 +104,11 @@ def main(argv: list[str] | None = None) -> None:
     else:
         mesh_enabled = bool(mesh_cfg)
     if mesh_enabled:
-        export_mesh(config_path, meshes_dir / f"{scene_name}.ply", extra_args=mesh_args)
+        export_mesh(
+            config_path,
+            meshes_dir / scene_name,
+            extra_args=mesh_args,
+        )
 
     if render_cfg.get("make_orbit_video", False):
         camera_path = Path(render_cfg["camera_path_file"])

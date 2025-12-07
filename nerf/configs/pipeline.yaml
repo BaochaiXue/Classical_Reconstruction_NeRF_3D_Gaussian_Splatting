@@ -23,7 +23,7 @@ training:
     - "64"
 
 render:
-  make_dataset_renders: true
+  make_dataset_renders: false
   dataset_render_split: train+test
   make_orbit_video: false
   # Provide a camera path JSON at this location to enable orbit rendering.
